@@ -27,3 +27,13 @@
 
 (defun fix-sqrt (x)
   (fix-point (sqrt-fix x)))
+
+;;; sqrt with you using average-damp
+
+(defun fix-average-damp-sqrt (x)
+  (fix-point
+   (average-damp (lambda (y) (/ x y)))))
+
+(defun average-damp (f)
+  (lambda (x)
+    (average (funcall f x) x)))
