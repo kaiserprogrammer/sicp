@@ -70,15 +70,13 @@
           (funcall f x))
        *dx*)))
 
-;;; Wishthuf thinking
+;;; Wishthul thinking
 (defun lambda-cons (a b)
   (lambda (pick)
-    (if (= pick 1)
-        a
-        b)))
+    (funcall pick a b)))
 
 (defun lambda-car (p)
-  (funcall p 1))
+  (funcall p (lambda (a b) (declare (ignore b)) a)))
 
 (defun lambda-cdr (p)
-  (funcall p 2))
+  (funcall p (lambda (a b) (declare (ignore a)) b)))
